@@ -1,0 +1,34 @@
+create table admin (
+	id int not null primary key AUTO_INCREMENT,
+    username varchar(2055) not null,
+    password varchar(255) not null
+);
+
+create TABLE siswa (
+	idSiswa int not null primary key AUTO_INCREMENT,
+    nama varchar(255) not null,
+    jenisKelamin varchar(255) not null check (jenisKelamin in ('Laki-laki','Perempuan')),
+    tempatLahir varchar(255) not null,
+    tanggalLahir varchar(255) not null,
+    alamat varchar(255) not null,
+    noHp varchar(255) not null,
+    nilaiMatematika decimal(4,2),
+    nilaiIPA decimal(4,2),
+    nilaiBahasa decimal(4,2),
+    ijazah varchar(100) not null,
+    status varchar(255) check (status in ('Y','N'))
+);
+
+create table kategori (
+	idKategori int not null primary key AUTO_INCREMENT,
+    nama varchar(255) not null
+);
+
+create table berita (
+	idBerita int not null primary key AUTO_INCREMENT,
+    judul varchar(255) not null,
+    gambar varchar(255) not null,
+    isi text,
+    idKategori int not null,
+    FOREIGN KEY (idKategori) REFERENCES kategori(idKategori)
+);
